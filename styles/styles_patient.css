@@ -1,0 +1,141 @@
+
+.welcome_container{
+    background-color: var(--blue-shade);
+    border-radius: 0.5rem;
+    margin:0.8rem 0.35rem;
+    display: flex;
+    flex-direction: column;
+    padding:0.6rem;
+}
+
+
+.session-wrapper{
+    padding:0.6rem;
+}
+.booking_listing{
+    width: 100%;
+}
+.session-wrapper table{
+    font-family: 'Roboto', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 0;
+    margin-top: 0.5rem;
+}
+/* .booking_listing{
+    border: 1px solid var(--grey) !important;
+    border-radius: 8px !important;
+} */
+td, th {
+    border: 1px solid #dddddd !important;
+    text-align: left;
+    padding: 8px;
+  }
+
+/* END of DASHBOARD STYLES */
+
+
+.appointment-wrapper{
+    width:100%;
+}
+
+/* DOCTOR PAGE STYLES  */
+.doctors-wrapper,.appointment-wrapper{
+    width:100%;
+    margin-top: 3rem;
+    padding:2rem 1.5rem;
+}
+.doctors-wrapper .table_listing, .appointment-wrapper .table_listing{
+    width: 100%;
+    border-collapse: collapse;
+}
+.table_listing, td,th{
+    border:1px solid #bbb !important;
+    text-align: left;
+}
+.table_listing{
+    border-radius: 10px;
+}
+
+tfoot th {
+    border-radius: 0 0 10px 10px;
+}
+
+th {
+    border-radius: 10px 10px 0 0;
+}
+/* END OF DOCTOR STYLES  */
+
+
+/* START OF PATIENT PROFILE PAGE STYLES */
+.profile-wrapper{
+    padding:3rem 2.5rem;
+}
+.profile-wrapper .personal_wrapper{
+    padding:1.2 rem 0.5rem;
+    border: 1px solid #dddd;
+    border-radius: 0.5rem;
+    padding:0.8rem;
+}
+.personal_wrapper .personal-title{
+    display: flex;
+    justify-content: space-between;
+}
+.personal-title .actions-btn{
+    margin-right: 1.2rem;
+}
+.personal-title .actions-btn button{
+    margin-right: 2rem;
+    border: none;
+    color: var(--white);
+    outline: none;
+    padding:0.4rem 0.8rem;
+    border-radius: 0.3rem;
+    background-color: var(--blue);
+}
+.personal-title .actions-btn button .fa-solid{
+    margin-right: 0.4rem;
+}
+.profile-wrapper .personal_wrapper .row_group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.personal_wrapper .row_group .input-col .input-title{
+    font-size: 1.15rem;
+    text-align: left;
+    font-weight: 500;
+
+}
+.personal_wrapper .row_group .input-col{
+    display: flex;
+    width: 49%;
+    flex-direction: column;
+}
+.personal_wrapper .row_group .input-col .input-txt{
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    padding:0.45rem;
+}
+.personal_wrapper .row_group .input-col .input-txt .fa-solid{
+    margin-right:0.5rem;
+}
+.profile-wrapper .password_wrapper{
+    margin-top:1.5rem;
+    border: 1px solid #dddd;
+    padding:1.2rem;
+    border-radius: 0.8rem;
+}
+
+
+.optionMenu{
+    text-align: center;
+    position: relative;
+}
+.optionMenu span{
+    cursor: pointer;
+}
+
+
+
+/* END OF PATIENT STYLES */

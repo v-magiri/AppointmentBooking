@@ -1,0 +1,56 @@
+/* DASHBOARD STYLES  */
+.stats-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:0.5rem 0.8rem;
+    justify-content: space-between;
+}
+.stats-card{
+    display: flex;
+    align-items: center;
+    padding:1.5rem 2.5rem;
+    gap: 0.6rem;
+}
+.stats-card .fa-solid{
+    font-size: 2rem;
+}
+.stats-card .card-text .card-title{
+    font-size: 1.25rem;
+}
+.stats-card .card-text{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.appointments_wrapper{
+    padding:0.4rem 0.5rem;
+}
+.table-wrapper{
+    width: 100%;
+    padding:0.5rem;
+}
+
+.doctors_wrapper{
+    padding:1.5rem 0.8rem;
+    width: 100%;
+    margin-top: 5rem;
+}
+.title-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.doctors_wrapper .title-wrapper .create-container button{
+    margin-right: 2rem;
+    border: none;
+    color: var(--white);
+    outline: none;
+    padding:0.4rem 0.8rem;
+    border-radius: 0.3rem;
+    background-color: var(--blue);
+}
+.doctors_wrapper .doctors_listing table{
+    margin:0.8rem auto;
+    width: 100%;
+}

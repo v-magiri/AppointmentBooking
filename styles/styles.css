@@ -1,0 +1,128 @@
+:root{
+    --white:#ffffff;
+    --light-white:#E9EAEC;
+    --white-shade:#f3f3f3;
+    --black:#000000;
+    --blue:#00aae4;
+    --blue-shade:#87ceeb;
+}
+body{
+    background-color: var(--white);
+}
+.header-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0.8rem 0.5rem;
+    background-color: var(--blue);
+}
+.header-nav .logo{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1.5rem;
+}
+.nav-links ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    gap: 2rem;
+}
+.nav-links ul li {
+    list-style: none;
+}
+.nav-links ul li a{
+    text-decoration: none;  
+    color: var(--white);
+}
+.banner{
+    padding:0.6rem 0.7rem;
+    height: 100vh;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.banner-text{
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem 0.8rem;
+}
+.banner-text p{
+    padding:2.5rem 0;
+}
+.banner-text .actions-Btn a{
+    text-decoration: none;
+    background-color: var(--blue-shade);
+    color: var(--white);
+    font-size: 1.2rem;
+    border-radius: 1.5rem;
+    padding:0.5rem 0.6rem;
+
+}
+.banner-illustration{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:0.3rem 0.5rem;
+
+}
+.banner-illustration img{
+    width: 450px;   
+}
+
+/* FOOTER  */
+.footer{
+    padding:0.8rem 1.5rem;
+    background-color: var(--blue-shade);
+    width: 100%;
+    height: 100%;
+}
+.footer .social-link ul{
+    list-style: none;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 2rem;
+}
+.footer .social-link ul li a{
+    text-decoration: none;
+    color: var(--black);
+}
+.footer .social-link ul li a span{
+    margin-left: 0.3rem;
+}
+.footer p{
+    text-align: center;
+}
+/* END OF FOOTER  */
+
+/* LOGIN PAGE STYLES  */
+.login-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:4rem 2rem;
+}
+.login-form{
+    width:50%;
+    padding:4rem 2rem 1rem 2rem;
+    border-radius: 0.8rem !important;
+    background-color: var(--white-shade);
+}
+.login-wrapper form{
+    width:100%;
+}
+/* LOGIN PAGE STYLES  */
+
+/* PATIENT REGISTRATION STYLES  */
+.signup-form{
+    width: 50vw;
+    padding:2rem 1.5rem;
+    margin:2rem auto;
+}
+.signup-wrapper .signup-form .title h4{
+
+}
+
+/* END OF PATIENT REGISTRATION STYLES  */
