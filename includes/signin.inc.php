@@ -59,15 +59,18 @@
                 $_SESSION['user_id']=$result['admin_id'];
                 $_SESSION['user_name']= htmlspecialchars($result['admin_username']);
                 $_SESSION['user_type']= 'Admin';
+                $_SESSION['name']= 'Administrator';
             }else if($role_result["role"] === "Doctor"){
                 $session_id= $new_session_id ."_". $result["doctor_id"];
                 $_SESSION['user_id']=$result['doctor_id'];
                 $_SESSION['user_name']= htmlspecialchars($result['username']);
                 $_SESSION['user_type']= 'Doctor';
+                $_SESSION['name']= $result['name'];
             }else if($role_result["role"] === "Patient"){
                 $session_id= $new_session_id ."_". $result["patient_id"];
                 $_SESSION['user_id']=$result['patient_id'];
                 $_SESSION['user_name']= htmlspecialchars($result['username']);
+                $_SESSION['name']= $result['firstName'].' '.$result['lastName'];
                 $_SESSION['user_type']= 'Patient';
             }
             

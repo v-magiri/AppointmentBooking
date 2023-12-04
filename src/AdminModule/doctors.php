@@ -31,8 +31,8 @@
                     <img src="../../assets/user_icon.png" alt="Person Avatar">
                     <div class="user-info">
                         <?php
-                            echo "<span class='nameTxt'>". is_user_logged_in() . "</span>";
-                            echo "<span class='usernameTxt'>". is_user_logged_in() . "</span>";
+                            echo "<span class='nameTxt'>". get_name() . "</span>";
+                            echo "<span class='usernameTxt'>". get_username() . "</span>";
                         ?> 
 
                     </div>
@@ -63,9 +63,10 @@
                         </a>
                     </li>
 
+
                     <li>
-                        <a href="profile.php">
-                            <i class="fa-solid fa-user"></i>
+                        <a href="settings.php">
+                            <i class="fa-solid fa-gear"></i>
                             <span>Setting</span>
                         </a>
                     </li>
@@ -146,8 +147,30 @@
                                                     </td>
                                                     <td>'.substr($row['speciality_name'],0,20).'
                                                     </td>
-                                                    <td>
-                                                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                                                    <td class="optionMenu">
+                                                        <span id="showOptions" onclick="showPopupMenu(event)">
+                                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                        </span>
+                                                        <div class="popupMenu" id="popUpMenu">
+                                                            <div class="menu-item" onclick="openDoctorDialog(event,'.$row['doctor_id'].')">
+                                                                <a href="#">
+                                                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                                    <span>View Doctor</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="menu-item" onclick="editDoctor(event,'.$row['doctor_id'].')">
+                                                                <a href="#">
+                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                    <span>Update Doctor</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="menu-item" onclick="deleteDoctor(event,'.$row['doctor_id'].')">
+                                                                <a href="#">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                    <span>Delete Doctor</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                     </tr>
                                                 ';
@@ -176,5 +199,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="../../js/script.js"></script>
+        <script src="../../js/admin.js"></script>
     </body>
 </html>

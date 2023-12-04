@@ -49,4 +49,16 @@
         $result= $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    function get_specific_doctor(object $pdo,int $doctor_id){
+        $query="SELECT d.name,d.email_address,d.phoneNumber,d.availability_status,s.speciality_name FROM tbl_doctors d 
+                JOIN tbl_speciality s ON d.speciality = s.speciality_id
+                WHERE d.doctor_id=:doctor_id;";
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":doctor_id",$doctor_id);
+        $stmt->execute();
+    
+        $result= $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 ?>

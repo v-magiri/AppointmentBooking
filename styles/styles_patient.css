@@ -8,6 +8,12 @@
     padding:0.6rem;
 }
 
+.welcome_container .nameTxt{
+    padding:0.8rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-style: bold;
+}
 
 .session-wrapper{
     padding:0.6rem;
@@ -135,7 +141,22 @@ th {
 .optionMenu span{
     cursor: pointer;
 }
-
+.availability{
+    font-size: 0.95rem;
+    text-align: center;
+}
+.availability .available-txt{
+    background-color: var(--success);
+    color: var(--white);
+    padding:0 0.6rem;
+    border-radius: 0.8rem;
+}
+.availability .non_availabilityTxt{
+    background-color: var(--orange);
+    color: var(--white);
+    padding:0 0.6rem;
+    border-radius: 0.8rem;
+}
 
 
 /* END OF PATIENT STYLES */

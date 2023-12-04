@@ -5,6 +5,7 @@
     --white-shade:#f2f2f2;
     --dark:#343a40;
     --danger:#d0312d;
+    --orange:#db7210;
     --success:#4caf50;
     --transparent-white:#f1f1f1;
     --white:#ffffff;
@@ -43,6 +44,7 @@ body{
     padding:2rem 0;
     gap:0.9rem;
     align-items: center;
+    border-bottom: 1px solid #ddd;
 }
 .user-profile img{
     width:80px;
@@ -51,6 +53,17 @@ body{
     color:var(--dark);
     display: block;
     white-space: nowrap;
+}
+.user-profile .user-info .nameTxt{
+    color: var(--black);
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+.user-profile .user-info .usernameTxt{
+    color: var(--black);
+    font-size: 0.985rem;
+    font-weight: 500;
+    font-style: italic;
 }
 .menu{
     list-style: none;
@@ -178,6 +191,11 @@ body{
     gap: 1.5rem;
     align-items: center;
 }
+.appointment_reason{
+    border:1px solid var(--bs-border-color);
+    border-radius: 0.3rem;
+    padding:0.4rem 0.5rem;
+}
 .closeBtn{
     background-color: var(--grey);
     text-decoration: none;
@@ -187,6 +205,13 @@ body{
 }
 .submit-Btn{
     background-color: var(--blue) !important;
+    padding:0.8rem 2rem !important;
+    border-radius: 0.5rem !important;
+    border: none !important;
+    outline: none !important;
+}
+.deleteBtn{
+    background-color: var(--danger) !important;
     padding:0.8rem 2rem !important;
     border-radius: 0.5rem !important;
     border: none !important;
@@ -210,13 +235,23 @@ body{
 }
 
 .menu-item{
-    padding: 12px 16px;
+    padding: 0.8rem 0.8rem;
     width: 100%;
     white-space: nowrap;
 }
 .menu-item a{
     text-decoration: none;
     color: var(--dark);
+    text-align: left;
+}
+.menu-item a span{
+    margin-left: 0.25rem;
+}
+.menu-item:hover{
+    background-color: var(--blue);
+}
+.menu-item:hover a{
+    color: var(--white);
 }
 
 /* END OF POP MENU STYLES  */

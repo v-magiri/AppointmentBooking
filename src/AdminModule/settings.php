@@ -1,6 +1,15 @@
 <?php
     require_once '../../includes/config_session.inc.php';
     require_once '../../includes/user_status.php';
+    include('../../includes/database_config.php');
+    if(isset($_SESSION["user_id"])){
+        if(($_SESSION["user_id"]) == "" or $_SESSION['user_type'] != 'Admin'){
+            header("location: ../../login.php");
+        }
+
+    }else{
+        header("location: ../../login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +18,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">   
-        <link href="../../styles/main.css" rel="stylesheet" type="text/css"/>  
-        <title>My Profile</title>
+        <link href="../../styles/main.css" rel="stylesheet" type="text/css"/> 
+        <link href="../../styles/styles_admin.css" rel="stylesheet" type="text/css"/>
+        <title>Profile | Appointment Booking Application</title>
     </head>
     <body>
         <div class="main_content">
@@ -33,21 +43,27 @@
                         </a>
                     </li>
                     <li>
+                        <a href="doctors.php">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <span>Doctors</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="patient.php">
+                            <i class="fa-solid fa-hospital-user"></i>
+                            <span>Patients</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="appointment.php">
                             <i class="fa-solid fa-calendar-check"></i>
                             <span>Appointments</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="sessions.php">
-                            <i class="fa-solid fa-calendar-check"></i>
-                            <span>Sessions</span>
-                        </a>
-                    </li>
 
                     <li class="active">
-                        <a href="profile.php">
-                            <i class="fa-solid fa-user"></i>
+                        <a href="settings.php">
+                            <i class="fa-solid fa-gear"></i>
                             <span>Setting</span>
                         </a>
                     </li>
@@ -91,7 +107,7 @@
 
                                     try{
                                         $username=$_SESSION["user_name"];
-                                        $query="SELECT *  FROM tbl_patients WHERE username=:username;";
+                                        $query="SELECT *  FROM tbl_admin WHERE admin_username=:username;";
                                         $stmt=$conn->prepare($query);
                                         $stmt->bindParam(":username",$username);
                                         $stmt->execute();
@@ -102,17 +118,17 @@
                                                 <div class='row_group mb-3'>
                                                     <div class='input-col'>
                                                         <span class='input-title mb-3'>Name</span>
-                                                        <span class='input-txt'> <i class='fa-solid fa-user'></i>".$result['firstName']." ".$result['lastName']."</span>
+                                                        <span class='input-txt'> <i class='fa-solid fa-user'></i>Administrator</span>
                                                     </div>
                                                     <div class='input-col'>
                                                         <span class='input-title mb-3'>Username</span>
-                                                        <span class='input-txt'> <i class='fa-solid fa-at'></i>".$result['username']."</span>
+                                                        <span class='input-txt'> <i class='fa-solid fa-at'></i>".$result['admin_username']."</span>
                                                     </div>                            
                                                 </div>
                                                 <div class='row_group'>
                                                     <div class='input-col'>
                                                         <span class='input-title mb-3'>Email Address</span>
-                                                        <span class='input-txt'> <i class='fa-solid fa-envelope'></i>".$result['emailAddress']."</span>
+                                                        <span class='input-txt'> <i class='fa-solid fa-envelope'></i>".$result['email_address']."</span>
                                                     </div>
                                                     <div class='input-col'>
                                                         <span class='input-title mb-3'>Phone Number</span>

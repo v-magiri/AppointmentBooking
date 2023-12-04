@@ -29,8 +29,8 @@
                     <img src="../../assets/user_icon.png" alt="Person Avatar">
                     <div class="user-info">
                         <?php
-                            echo "<span class='nameTxt'>". is_user_logged_in() . "</span>";
-                            echo "<span class='usernameTxt'>". is_user_logged_in() . "</span>";
+                            echo "<span class='nameTxt'>". get_name() . "</span>";
+                            echo "<span class='usernameTxt'>". get_username() . "</span>";
                         ?> 
 
                     </div>
