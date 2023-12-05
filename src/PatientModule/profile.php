@@ -1,6 +1,7 @@
 <?php
     require_once '../../includes/config_session.inc.php';
     require_once '../../includes/user_status.php';
+    require_once '../../includes/profile_view.php';
     include('../../includes/database_config.php');
     if(isset($_SESSION["user_id"])){
         if(($_SESSION["user_id"]) == "" or $_SESSION['user_type'] != 'Patient'){
@@ -70,6 +71,11 @@
                 </ul>
             </div>
             <div class="board-wrapper">
+                <div class="errors-wrapper">
+                    <?php
+                        check_profile_errors();
+                    ?>
+                </div>
                 <div class="board_header">
                     <h4>Profile Settings</h4>
                     <div class="date-wrapper">

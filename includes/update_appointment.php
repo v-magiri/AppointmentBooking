@@ -35,7 +35,7 @@
                 redirect_user();
                 die();
             }
-
+            
             redirect_user();
 
             $conn=null;

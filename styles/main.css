@@ -253,5 +253,8 @@ body{
 .menu-item:hover a{
     color: var(--white);
 }
+.menu-item:hover .fa-solid{
+    color: var(--white) !important;
+}
 
 /* END OF POP MENU STYLES  */

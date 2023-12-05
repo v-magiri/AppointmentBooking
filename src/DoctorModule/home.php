@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <ul class="menu">
-                    <li>
+                    <li  class="active">
                         <a href="home.php">
                             <i class="fa-solid fa-house"></i>
                             <span>Home</span>
@@ -77,6 +77,16 @@
                             </span>
                         </div>
                     </div>
+                </div>
+                <div class="welcome_container">
+                    <span>Welcome</span>
+                    <?php
+                        echo "<span class='nameTxt'>". get_name() . "</span>";
+                    ?> 
+                    <div class="instruction_container">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam numquam laudantium corrupti nobis eos cumque placeat eligendi sunt, animi asperiores, nemo nihil veniam? Debitis cumque, porro officiis vitae id ducimus!</p>
+                    </div>
+
                 </div>
             </div>
         </div>

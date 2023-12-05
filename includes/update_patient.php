@@ -9,46 +9,46 @@
         $patient_id= (int) $_POST['patient_id'];
         try{
             require_once './database_config.php';
-            require_once './appointment_controller.php';
-            require_once './appointment_model.php';
+            require_once './patient_controller.php';
+            require_once './patient_model.php';
 
             $errors=[];
 
-            if(is_appointment_input_empty($updated_date,$updated_time)){
+            if(is_update_input_empty($firstName,$lastName,$emailAddress,$phoneNumber)){
                 $errors['empty_input'] = 'Please fill all fields';
             }
 
-            $result=get_appointment($conn,$appointment_id);
+            $result=get_patient($conn,$patient_id);
 
-            if(does_appointment_exist($result)){
-                $errors['appointment_does_exist'] = 'Appointment does not exist';
+            if(does_patient_exist($result)){
+                $errors['patient_invalid'] = 'Patient does not exist';
             }
             require_once 'config_session.inc.php';
 
             if(isset($_SESSION["user_id"])){
-                update_appointment($conn,$updated_date,$updated_time,$appointment_id);
+                update_patient_details($conn,$firstName,$lastName,$emailAddress,$phoneNumber, $patient_id);
             }else{
                 header('Location: ../login.php');
             }
             
 
             if($errors){
-                $_SESSION['appointment_errors']=$errors;
-                redirect_user();
+                $_SESSION['profile_errors']=$errors;
+                header('Location: ../src/PatientModule/profile.php');
                 die();
             }
 
-            redirect_user();
+            header('Location: ../src/PatientModule/profile.php');
 
             $conn=null;
             $stmt=null;         
             die();
         }catch(PDOException $e){
-            echo "Could not reschedule Appointment: Error".$e->getMessage();
+            echo "Could not Update Patient: Error".$e->getMessage();
         }
     }else{
-        echo "Could not reschedule Appointment.";
-        redirect_user();
+        echo "Could not update Patient.";
+        header('Location: ../src/PatientModule/profile.php');
     }
 
 ?>

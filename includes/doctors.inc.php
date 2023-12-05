@@ -11,6 +11,7 @@
             require_once 'database_config.php';
             require_once 'doctor_controller.php';
             require_once 'doctors_model.php';
+            require_once './email_service.php';
 
             $errors=[];
 
@@ -42,10 +43,29 @@
                 die();
             }
 
-
             $speciality=(int) $speciality;
 
             register_doctor($conn, $fullName, $email, $phoneNumber, $speciality,$username);
+
+            $doctor_result=fetch_doctor($conn, $username);
+
+            if(!does_doctor_valid($doctor_result)){
+                // generate verification code 
+                $verificationCode = bin2hex(random_bytes(10));
+                saveToken($conn,$verificationCode,$doctor_result['doctor_id']);
+                $email_subject="Account Created";
+                $link="http://localhost/portal/verify_account.php?token=".$verificationCode;
+               
+                $email_message= "Hello ".$fullName.".\n Your account on the Appointment Booking portal has been created.Please access your account using the following link \n".$link."\n Please note your username is ".$username;
+
+            }else{
+                header("Location: ../src/AdminModule/doctors.php?registration=token_not_generated");
+            }
+
+            if(!sendEmail($email,$email_subject,$email_message)){
+                header("Location: ../src/AdminModule/doctors.php?registration=email_not_sent");
+            }
+
 
             header("Location: ../src/AdminModule/doctors.php?registration=success");
 
@@ -56,6 +76,7 @@
 
         }catch(PDOException $e){
             die("Query Failed ".$e -> getMessage());
+            // die();
         }
     }else{
         header("Location: ../src/AdminModule/doctors.php");

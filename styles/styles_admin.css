@@ -9,22 +9,42 @@
 .stats-card{
     display: flex;
     align-items: center;
-    padding:1.5rem 2.5rem;
+    padding:2.5rem 3rem;
     gap: 0.6rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
 }
 .stats-card .fa-solid{
     font-size: 2rem;
+    color: var(--white);
 }
 .stats-card .card-text .card-title{
-    font-size: 1.25rem;
+    font-size: 0.985rem;
 }
 .stats-card .card-text{
+    margin-left: 0.5rem;
     display: flex;
     flex-direction: column-reverse;
+    color: var(--white);
+}
+.stats-card .card-text .count{
+    font-size: 1.5rem;
+}
+.doctor_card{
+    background-color: var(--blue);
+}
+.patient_card{
+    background-color: var(--orange);
+}
+.appointment_card{
+    background-color: var(--success);
 }
 
-.appointments_wrapper,.appointment-wrapper{
+.appointments_wrapper{
     padding:0.4rem 0.5rem;
+}
+.appointment-wrapper{
+    padding:3rem 3rem 3rem 1.5rem;
 }
 .appointments_wrapper .table-wrapper,.appointment-wrapper .table_listing{
     width: 100%;
@@ -76,24 +96,20 @@ td,th{
     width: 100%;
 }
 
-/* START OF ADMIN PROFILE PAGE STYLES */
-.profile-wrapper{
-    padding:3rem 2.5rem;
+/* START OF PORTAL SETTING PAGE STYLES */
+.specialities-wrapper{
+    padding:3rem 3rem 3rem 1.5rem;
 }
-.profile-wrapper .personal_wrapper{
-    padding:1.2 rem 0.5rem;
-    border: 1px solid #dddd;
-    border-radius: 0.5rem;
-    padding:0.8rem;
-}
-.personal_wrapper .personal-title{
+.specialities-wrapper .speciality-header{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
-.personal-title .actions-btn{
+
+.speciality-header .actions-btn{
     margin-right: 1.2rem;
 }
-.personal-title .actions-btn button{
+.speciality-header .actions-btn button{
     margin-right: 2rem;
     border: none;
     color: var(--white);
@@ -102,38 +118,20 @@ td,th{
     border-radius: 0.3rem;
     background-color: var(--blue);
 }
-.personal-title .actions-btn button .fa-solid{
+.speciality-header .actions-btn button .fa-solid{
     margin-right: 0.4rem;
 }
-.profile-wrapper .personal_wrapper .row_group{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.speciality_listing{
+    margin-top: 0.8rem;
 }
-.personal_wrapper .row_group .input-col .input-title{
-    font-size: 1.15rem;
-    text-align: left;
-    font-weight: 500;
-
+.speciality_listing table{
+    width: 100%;
 }
-.personal_wrapper .row_group .input-col{
-    display: flex;
-    width: 49%;
-    flex-direction: column;
+.popupMenu .fa-pen-to-square{
+    color: var(--success);
 }
-.personal_wrapper .row_group .input-col .input-txt{
-    border: 1px solid #ddd;
-    border-radius: 0.25rem;
-    padding:0.45rem;
-}
-.personal_wrapper .row_group .input-col .input-txt .fa-solid{
-    margin-right:0.5rem;
-}
-.profile-wrapper .password_wrapper{
-    margin-top:1.5rem;
-    border: 1px solid #dddd;
-    padding:1.2rem;
-    border-radius: 0.8rem;
+.popupMenu .fa-trash{
+    color: var(--danger);
 }
 
 /* END OF ADMIN PROFILE SETTINGS  */

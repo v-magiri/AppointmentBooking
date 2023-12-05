@@ -44,4 +44,20 @@
         add_user_role($pdo,$username,"Doctor");
         save_doctor($pdo,$name, $email, $phoneNumber, $speciality, $username);
     }
+
+    function does_doctor_valid(bool|array $result){
+        if(!$result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function saveToken(object $pdo,string $token,int $doctor_id){
+        register_token($pdo,$token,$doctor_id);
+    }
+
+    function set_password(object $conn,string $password,int $doctor_id){
+        save_doctor_password($conn,$password,$doctor_id);
+    }
 ?>

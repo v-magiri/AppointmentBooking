@@ -104,13 +104,14 @@ body{
     align-items: center;
     padding:4rem 2rem;
 }
-.login-form{
+
+.login-form,.verify-form{
     width:50%;
     padding:4rem 2rem 1rem 2rem;
     border-radius: 0.8rem !important;
     background-color: var(--white-shade);
 }
-.login-wrapper form{
+.login-wrapper form,.verify-wrapper form{
     width:100%;
 }
 /* LOGIN PAGE STYLES  */
@@ -123,6 +124,40 @@ body{
 }
 .signup-wrapper .signup-form .title h4{
 
+}
+
+.verify-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:4rem 2rem;
+    min-height: 100vh;
+}
+.verify-form{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    height: 70%;
+    background-color: var(--white-shade)
+}
+.welcome-text p{
+    font-size: 1.115rem;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+.welcome-text .name-txt{
+    font-weight: 600;
+    color: var(--blue);
+}
+.action_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom:3rem;
+}
+#verifyBtn{
+    background-color: var(--blue) !important;
+    border: none;
 }
 
 /* END OF PATIENT REGISTRATION STYLES  */

@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="stats-wrapper">
-                    <div class="stats-card">
+                    <div class="stats-card doctor_card">
                         <i class="fa-solid fa-user-doctor"></i>
                         <div class="card-text">
                             <?php
@@ -118,7 +118,7 @@
                             <span class="card-title">Doctors</span>
                         </div>
                     </div>
-                    <div class="stats-card">
+                    <div class="stats-card patient_card">
                         <i class="fa-solid fa-hospital-user"></i>
                         <div class="card-text">
                             <?php
@@ -139,7 +139,7 @@
                             <span class="card-title">Patients</span>  
                         </div>
                     </div>
-                    <div class="stats-card">
+                    <div class="stats-card appointment_card">
                         <i class="fa-solid fa-calendar-check"></i>
                         <div class="card-text">
                              <?php

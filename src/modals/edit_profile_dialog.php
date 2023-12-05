@@ -5,10 +5,10 @@
             <span class="close" id="closeBtn">&times;</span>
         </div>
         <div class="dialog-body">
-            <form action="" method="post" role="form">
                 <?php
                     if( $_SESSION['user_type'] == 'Patient'){
                 ?>
+                <form action="../../includes/update_patient.php" method="post" role="form">
                     <div class='form-group my-1'>
                         <label for='firstName' class='my-1'>FirstName:</label>
                         <input type='text' class='form-control' name='firstName' value="<?php echo $result['firstName']?>"  required>
@@ -25,6 +25,15 @@
                         <label for='phoneNumber' class='my-1'>Phone Number:</label>
                         <input type='text' class='form-control' name='phoneNumber' value="<?php echo $result['phoneNumber']?>"  required>
                     </div>
+                    <div class='form-group my-1 d-none'>
+                        <label for='patient_id' class='my-1'>Patient ID:</label>
+                        <input type='hidden' class='form-control' id='patient_id' name='patient_id' value="<?php echo $result['patient_id']?>">
+                    </div>
+                    <div class="btns-group mt-4 mb-2">
+                        <a href="#" class="closeBtn" id="closeDialogBtn">Close</a>
+                        <input type="submit" value="Update" class="btn submit-Btn btn-primary ml-auto">
+                    </div>
+                </form>
                 <?php
                     }
                     if( $_SESSION['user_type'] == 'Doctor'){
@@ -41,14 +50,14 @@
                                 <label for='phoneNumber' class='my-1'>Phone Number:</label>
                                 <input type='text' class='form-control' name='phoneNumber'  required>
                             </div>
-                            ";
+                            <div class='btns-group mt-4 mb-2'>
+                                    <a href='#' class='closeBtn' id='closeDialogBtn'>Close</a>
+                                    <input type='submit' value='Update' class='btn submit-Btn btn-primary ml-auto'>
+                            </div>
+                        </form>
+                        ";
                     }
                 ?>
-                <div class="btns-group mt-4 mb-2">
-                    <a href="#" class="closeBtn" id="closeDialogBtn">Close</a>
-                    <input type="submit" value="Create" class="btn submit-Btn btn-primary ml-auto">
-              </div>
-            </form>
         </div>
     </div>
 </div>

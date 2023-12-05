@@ -1,6 +1,15 @@
 <?php
     require_once '../../includes/config_session.inc.php';
     require_once '../../includes/user_status.php';
+    include('../../includes/database_config.php');
+    if(isset($_SESSION["user_id"])){
+        if(($_SESSION["user_id"]) == "" or $_SESSION['user_type'] != 'Doctor'){
+            header("location: ../../login.php");
+        }
+
+    }else{
+        header("location: ../../login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">   
         <link href="../../styles/main.css" rel="stylesheet" type="text/css"/>  
+        <link href="../../styles/styles_doctor.css" rel="stylesheet" type="text/css"/> 
         <title>My Profile</title>
     </head>
     <body>
@@ -91,7 +101,7 @@
 
                                     try{
                                         $username=$_SESSION["user_name"];
-                                        $query="SELECT *  FROM tbl_patients WHERE username=:username;";
+                                        $query="SELECT *  FROM tbl_doctors WHERE username=:username;";
                                         $stmt=$conn->prepare($query);
                                         $stmt->bindParam(":username",$username);
                                         $stmt->execute();
@@ -102,7 +112,7 @@
                                                 <div class='row_group mb-3'>
                                                     <div class='input-col'>
                                                         <span class='input-title mb-3'>Name</span>
-                                                        <span class='input-txt'> <i class='fa-solid fa-user'></i>".$result['firstName']." ".$result['lastName']."</span>
+                                                        <span class='input-txt'> <i class='fa-solid fa-user'></i>".$result['name']."</span>
                                                     </div>
                                                     <div class='input-col'>
                                                         <span class='input-title mb-3'>Username</span>
@@ -112,7 +122,7 @@
                                                 <div class='row_group'>
                                                     <div class='input-col'>
                                                         <span class='input-title mb-3'>Email Address</span>
-                                                        <span class='input-txt'> <i class='fa-solid fa-envelope'></i>".$result['emailAddress']."</span>
+                                                        <span class='input-txt'> <i class='fa-solid fa-envelope'></i>".$result['email_address']."</span>
                                                     </div>
                                                     <div class='input-col'>
                                                         <span class='input-title mb-3'>Phone Number</span>
@@ -147,10 +157,14 @@
             </div>
         </div>
 
+        <?php
+            require_once '../modals/edit_profile_dialog.php';
+        ?> 
 
         <script src="https://kit.fontawesome.com/2493969055.js" crossorigin="anonymous"></script>  
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="../../js/main.js"></script>
     </body>
 </html>

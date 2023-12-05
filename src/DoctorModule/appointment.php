@@ -32,7 +32,7 @@
                             <span>Home</span>
                         </a>
                     </li>
-                    <li>
+                    <li  class="active">
                         <a href="appointment.php">
                             <i class="fa-solid fa-calendar-check"></i>
                             <span>Appointments</span>

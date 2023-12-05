@@ -33,12 +33,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="doctor.php">
-                            <i class="fa-solid fa-user-doctor"></i>
-                            <span>Doctors</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="appointment.php">
                             <i class="fa-solid fa-calendar-check"></i>
                             <span>Appointments</span>
@@ -67,7 +61,7 @@
             </div>
             <div class="board-wrapper">
                 <div class="board_header">
-                    <h4>Home</h4>
+                    <h4>Sessions</h4>
                     <div class="date-wrapper">
                         <div class="date_specs">
                             <span class="date_title">Today's Date</span>
