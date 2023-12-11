@@ -146,7 +146,7 @@
                                                 </td>
                                                 <td class="optionMenu">
                                                     <span id="showOptions" onclick="showPopupMenu(event)">
-                                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                        <i class="fa-solid fa-ellipsis"></i>
                                                     </span>
                                                     <div class="popupMenu" id="popUpMenu">
                                                         <div class="menu-item" onclick="editSpeciality(event,'.$row['speciality_id'].')">

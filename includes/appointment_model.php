@@ -27,6 +27,29 @@
         return $result;
     }
 
+    function fetch_appointment(object $pdo,int $appointment_id){
+        $query="SELECT a.appointment_id,a.date,a.time,a.appointment_reason,CONCAT(p.firstName,' ',p.lastName) AS NAME FROM tbl_appointments a 
+                JOIN tbl_patients p ON p.patient_id = a.patient_id
+                WHERE a.appointment_id=:appointment_id;";
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":appointment_id",$appointment_id);
+        $stmt->execute();
+
+        $result= $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    function read_appointment(object $pdo,int $appointment_id){
+        $query="SELECT a.appointment_id,a.date,a.time,a.appointment_reason,d.name,CONCAT(p.firstName,' ',p.lastName) AS patient_name FROM tbl_appointments a 
+                JOIN tbl_patients p ON p.patient_id = a.patient_id
+                JOIN tbl_doctors d ON a.doctor = d.doctor_id
+                WHERE a.appointment_id=:appointment_id;";
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":appointment_id",$appointment_id);
+        $stmt->execute();
+
+        $result= $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
     function get_appointment(object $pdo,int $appointment_id){
         $query="SELECT a.appointment_id,a.date,a.time,a.appointment_reason,d.name FROM tbl_appointments a 
         JOIN tbl_doctors d ON a.doctor = d.doctor_id

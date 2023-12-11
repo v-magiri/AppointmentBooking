@@ -38,6 +38,7 @@
                     }
                     if( $_SESSION['user_type'] == 'Doctor'){
                         echo "
+                        <form action='../../includes/update_doctor.php' method='post' role='form'>
                             <div class='form-group my-1'>
                                 <label for='fullName' class='my-1'>Name:</label>
                                 <input type='text' class='form-control' name='fullName' >
@@ -50,9 +51,13 @@
                                 <label for='phoneNumber' class='my-1'>Phone Number:</label>
                                 <input type='text' class='form-control' name='phoneNumber'  required>
                             </div>
+                            <div class='form-group my-1 d-none'>
+                                <label for='doctor_id' class='my-1'> ID:</label>
+                                <input type='hidden' class='form-control' id='doctor_id' name='doctor_id' value='".$result["doctor_id"]."'>
+                            </div>
                             <div class='btns-group mt-4 mb-2'>
-                                    <a href='#' class='closeBtn' id='closeDialogBtn'>Close</a>
-                                    <input type='submit' value='Update' class='btn submit-Btn btn-primary ml-auto'>
+                                <a href='#' class='closeBtn' id='closeDialogBtn'>Close</a>
+                                <input type='submit' value='Update' class='btn submit-Btn btn-primary ml-auto'>
                             </div>
                         </form>
                         ";

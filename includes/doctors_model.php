@@ -105,4 +105,20 @@
             return false;
         }
     }
+
+    function update_doctor(object $pdo,string $name,string $email,string $phoneNumber,int $doctor_id){
+        $query= "UPDATE tbl_doctors SET name = :name,email_address = :email,phoneNumber = :updated_phone WHERE doctor_id = :doctor_id";
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":doctor_id",$doctor_id);
+        $stmt->bindParam(":name",$name);
+        $stmt->bindParam(":email",$email);
+        $stmt->bindParam(":updated_phone",$phoneNumber);
+        $stmt->execute();
+        
+        if($stmt->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 ?>

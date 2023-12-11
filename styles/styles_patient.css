@@ -58,6 +58,7 @@ td, th {
 .table_listing, td,th{
     border:1px solid #bbb !important;
     text-align: left;
+    padding:0.8rem;
 }
 .table_listing{
     border-radius: 10px;

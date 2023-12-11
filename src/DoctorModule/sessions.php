@@ -1,6 +1,15 @@
 <?php
     require_once '../../includes/config_session.inc.php';
     require_once '../../includes/user_status.php';
+    include('../../includes/database_config.php');
+    if(isset($_SESSION["user_id"])){
+        if(($_SESSION["user_id"]) == "" or $_SESSION['user_type'] != 'Patient'){
+            header("location: ../../login.php");
+        }
+
+    }else{
+        header("location: ../../login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

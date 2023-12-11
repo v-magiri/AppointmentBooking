@@ -9,18 +9,53 @@
 
             if(isset($_POST['appointment_id'])){
                 $appointment_id= (int) $_POST['appointment_id'];
-                $result=get_appointment($conn,$appointment_id);
-                if($result){
-                    $appointment_details=array(
-                        "date"=>$result['date'],
-                        "time"=>$result['time'],
-                        "reason"=> $result["appointment_reason"],
-                        "name"=> $result["name"],
-                    );
-                    $jsonDetails=json_encode($appointment_details);
-                    echo $jsonDetails;
-                }else{
-                    echo "Appointment not found";    
+
+                require_once "../includes/config_session.inc.php"; 
+
+                if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'Doctor'){
+                    $result=fetch_appointment($conn,$appointment_id);
+                    if($result){
+                        $appointment_details=array(
+                            "date"=>$result['date'],
+                            "time"=>$result['time'],
+                            "reason"=> $result["appointment_reason"],
+                            "patient_name"=> $result["NAME"],
+                        );
+                        $jsonDetails=json_encode($appointment_details);
+
+                        echo $jsonDetails;
+                    }else{
+                        echo "Appointment not found";    
+                    }
+                }else if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'Patient'){
+                    $result=get_appointment($conn,$appointment_id);
+                    if($result){
+                        $appointment_details=array(
+                            "date"=>$result['date'],
+                            "time"=>$result['time'],
+                            "reason"=> $result["appointment_reason"],
+                            "name"=> $result["name"],
+                        );
+                        $jsonDetails=json_encode($appointment_details);
+                        echo $jsonDetails;
+                    }else{
+                        echo "Appointment not found";    
+                    }
+                }else if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'Admin'){
+                    $result=read_appointment($conn,$appointment_id);
+                    if($result){
+                        $appointment_details=array(
+                            "date"=>$result['date'],
+                            "time"=>$result['time'],
+                            "reason"=> $result["appointment_reason"],
+                            "name"=> $result["name"],
+                            "patient_name"=>$result["patient_name"],
+                        );
+                        $jsonDetails=json_encode($appointment_details);
+                        echo $jsonDetails;
+                    }else{
+                        echo "Appointment not found";    
+                    }
                 }
             }
 

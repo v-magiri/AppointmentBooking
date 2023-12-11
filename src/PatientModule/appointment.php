@@ -152,13 +152,18 @@
                                                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                                 <span>View Appointment</span>
                                                             </a>
-                                                        </div>
-                                                        <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
-                                                            <a href="#">
-                                                                <i class="fa-solid fa-book-medical"></i>
-                                                                <span>Reshedule Appointment</span>
-                                                            </a>
-                                                        </div>
+                                                        </div>';
+                                                        if($row['date'] >= date("Y-m-d")){
+                                                            echo '
+                                                            <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
+                                                                <a href="#">
+                                                                    <i class="fa-solid fa-book-medical"></i>
+                                                                    <span>Reshedule Appointment</span>
+                                                                </a>
+                                                            </div>
+                                                            ';
+                                                        }
+                                                    echo'
                                                         <div class="menu-item" onclick="openDeleteDialog(event,'.$row['appointment_id'].')">
                                                             <a href="#">
                                                                 <i class="fa-solid fa-trash"></i>

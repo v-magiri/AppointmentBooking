@@ -3,6 +3,7 @@ const dialog=document.getElementById('specialityModal');
 const closeBtn=document.getElementById('closeDialogBtn');
 const clostDialogIcon=document.getElementById('closeBtn');
 
+
 const specialityDeleteDialog=document.getElementById('delete_speciality_dialog');
 
 // delete speciality dialog
@@ -20,13 +21,12 @@ function closeDeleteDialog(){
     specialityDeleteDialog.style.display='none';
 }
 
+function closeDialog(){
+    appointmentDialog.style.display='none';
+}
 
 function openSpecialityDialog(){
     dialog.style.display='block';
-}
-
-function closeDialog(){
-    dialog.style.display='none';
 }
 
 function showPopupMenu(event){

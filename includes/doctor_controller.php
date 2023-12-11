@@ -60,4 +60,17 @@
     function set_password(object $conn,string $password,int $doctor_id){
         save_doctor_password($conn,$password,$doctor_id);
     }
+
+    //check if update field are a valid
+    function validate_doctor_field(string $name,string $email,string $phoneNumber){
+        if(empty($name) || empty($email) || empty($phoneNumber)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function update_doctor_profile(object $pdo,string $name,string $email,string $phoneNumber,int $doctor_id){
+        update_doctor($pdo, $name, $email,$phoneNumber, $doctor_id);
+    }
 ?>

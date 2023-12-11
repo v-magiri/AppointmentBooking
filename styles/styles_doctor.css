@@ -1,4 +1,61 @@
 /* START OF DOCTOR PROFILE PAGE STYLES */
+.welcome_container{
+    background-color: var(--blue-shade);
+    border-radius: 0.5rem;
+    margin:0.8rem 0.35rem;
+    display: flex;
+    flex-direction: column;
+    padding:0.6rem;
+}
+
+.welcome_container .nameTxt{
+    padding:0.8rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-style: bold;
+}
+/* HOME PAGE STYLES  */
+.session-wrapper{
+    padding:0.6rem;
+}
+.booking_listing{
+    width: 100%;
+}
+.session-wrapper table{
+    font-family: 'Roboto', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 0;
+    margin-top: 0.5rem;
+}
+/* END OF HOME PAGE STYLES  */
+/* APPOINTMENT PAGE STYLES  */
+.appointment-wrapper{
+    width:100%;
+}
+.appointment-wrapper{
+    width:100%;
+    margin-top: 3rem;
+    padding:2rem 1.5rem;
+}
+.appointment-wrapper .table_listing{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table_listing, td,th{
+    border:1px solid #bbb !important;
+    text-align: left;
+}
+.table_listing{
+    border-radius: 10px;
+}
+td, th {
+    border: 1px solid #dddddd !important;
+    text-align: left;
+    padding: 8px;
+  }
+/* END OF APPOINTMENT STYLES  */
 .profile-wrapper{
     padding:3rem 2.5rem;
 }
@@ -56,4 +113,13 @@
     border: 1px solid #dddd;
     padding:1.2rem;
     border-radius: 0.8rem;
+}
+
+
+.optionMenu{
+    text-align: center;
+    position: relative;
+}
+.optionMenu span{
+    cursor: pointer;
 }
