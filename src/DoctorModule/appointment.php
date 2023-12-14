@@ -106,7 +106,7 @@
                         <?php
                                 try{
                                     $doctor_id = $_SESSION["user_id"];
-                                    $query="SELECT a.appointment_id,a.date,a.time,a.appointment_reason, CONCAT(p.firstName,' ',p.lastName) AS NAME FROM tbl_appointments a
+                                    $query="SELECT a.appointment_id,a.date,a.time,a.appointment_reason,a.status, CONCAT(p.firstName,' ',p.lastName) AS NAME FROM tbl_appointments a
                                             JOIN tbl_patients p  ON p.patient_id = a.patient_id
                                             WHERE a.doctor = :doctor_id
                                             ORDER BY a.date DESC ;";
@@ -133,26 +133,37 @@
                                                 </td>
                                                 <td>'.$row['NAME'].'
                                                 </td>
-                                                <td class="optionMenu">
+                                                <td class="optionMenu" id="actionsMenu">
                                                     <span id="showOptions" onclick="showPopupMenu(event)">
                                                         <i class="fa-solid fa-ellipsis"></i>
                                                     </span>
                                                     <div class="popupMenu" id="popUpMenu">
-                                                        <div class="menu-item" onclick="openAppointmentDialog(event,'.$row['appointment_id'].')">
+                                                        <div class="menu-item" id="acceptBtn" onclick="openAppointmentDialog(event,'.$row['appointment_id'].')">
                                                             <a href="#">
                                                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                                 <span>View Appointment</span>
                                                             </a>
                                                         </div>';
-                                                        if($row['date'] >= date("Y-m-d")){
+                                                        if(($row['status'] != "Accepted") and ($row['status'] != "Rejected") and ($row['date'] >= date("Y-m-d"))){
                                                             echo '
-                                                            <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
-                                                                <a href="#">
-                                                                    <i class="fa-solid fa-book-medical"></i>
-                                                                    <span>Reshedule Appointment</span>
-                                                                </a>
-                                                            </div>
-                                                            ';
+                                                                <div class="menu-item" id="acceptBtn" onclick="changeAppointmentStatus(event,'.$row['appointment_id'].')">
+                                                                    <a href="#">
+                                                                        <i class="fa-solid fa-circle-check"></i>
+                                                                        <span>Accept Appointment</span>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="menu-item" id="rejectBtn" onclick="changeAppointmentStatus(event,'.$row['appointment_id'].')">
+                                                                    <a href="#">
+                                                                        <i class="fa-solid fa-rectangle-xmark"></i>
+                                                                        <span>Reject Appointment</span>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
+                                                                    <a href="#">
+                                                                        <i class="fa-solid fa-book-medical"></i>
+                                                                        <span>Reshedule Appointment</span>
+                                                                    </a>
+                                                                </div>';
                                                         }
                                                     echo '
                                                     </div>

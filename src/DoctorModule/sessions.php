@@ -3,7 +3,7 @@
     require_once '../../includes/user_status.php';
     include('../../includes/database_config.php');
     if(isset($_SESSION["user_id"])){
-        if(($_SESSION["user_id"]) == "" or $_SESSION['user_type'] != 'Patient'){
+        if(($_SESSION["user_id"]) == "" or $_SESSION['user_type'] != 'Doctor'){
             header("location: ../../login.php");
         }
 

@@ -10,7 +10,7 @@
 
                 </div>
                 <div class="btns-group mt-2 mb-2">
-                    <a href="#" class="closeBtn" id="closeDialogBtn">Close</a>
+                    <a href="#" class="closeBtn" id="hideDialog">Close</a>
                     <input type="submit" value="Book Appointment" class="btn submit-Btn btn-primary ml-auto d-none">
                 </div>
             </form>

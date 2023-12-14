@@ -27,17 +27,17 @@
 
             if($errors){
                 $_SESSION['deletion_errors']=$errors;
-                redirect_user();
+                header('Location: ../src/AdminModule/settings.php');
                 die();
             }
 
-            redirect_user();
+            header('Location: ../src/AdminModule/settings.php');
             
             $conn=null;
             $stmt=null;         
             die();
         }catch(Exception $e){
-            echo "Could not delete Appointment: Error".$e->getMessage();
+            echo "Could not delete Speciality: Error".$e->getMessage();
         }
     }
 

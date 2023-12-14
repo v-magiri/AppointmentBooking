@@ -1,20 +1,27 @@
 const addSpecialityBtn=document.getElementById('addSpecialityBtn');
 const dialog=document.getElementById('specialityModal');
 const closeBtn=document.getElementById('closeDialogBtn');
-const clostDialogIcon=document.getElementById('closeBtn');
-
+const closeDialogIcon=document.getElementById('closeBtn');
+const updateDialog=document.getElementById('speciality_dialog');
+const hideSpecialityBtn=document.getElementById('hideDialogBtn');
+const hideSpecialityDialog=document.getElementById('hideBtn');
 
 const specialityDeleteDialog=document.getElementById('delete_speciality_dialog');
+const specialityContainer=document.getElementById('specialityContainer');
 
 // delete speciality dialog
 const hideBtn=document.getElementById('closeDeleteDialog');
 const hideDeleteDialog=document.getElementById('cancelDeleteBtn');
 
+// event listeners for update dialog
+hideSpecialityBtn.addEventListener('click',hideSpecialityModal);
+hideSpecialityDialog.addEventListener('click',hideSpecialityModal);
+
 hideDeleteDialog.addEventListener('click',closeDeleteDialog);
 hideBtn.addEventListener('click',closeDeleteDialog);
 
 addSpecialityBtn.addEventListener('click',openSpecialityDialog);
-clostDialogIcon.addEventListener('click',closeDialog);
+closeDialogIcon.addEventListener('click',closeDialog);
 closeBtn.addEventListener('click',closeDialog);
 
 function closeDeleteDialog(){
@@ -22,13 +29,16 @@ function closeDeleteDialog(){
 }
 
 function closeDialog(){
-    appointmentDialog.style.display='none';
+    dialog.style.display='none';
 }
 
 function openSpecialityDialog(){
     dialog.style.display='block';
 }
 
+function hideSpecialityModal(){
+    updateDialog.style.display='none';
+}
 function showPopupMenu(event){
     event.stopPropagation();
 
@@ -43,8 +53,50 @@ function showPopupMenu(event){
     event.preventDefault();
 }
 
-function editSpeciality(){
+function editSpeciality(event,speciality_id){
+    const optionsBtn=event.target;
 
+    const pop_up_menu=optionsBtn.parentElement.parentElement.parentElement;
+
+    $.ajax({
+        url: '../../includes/fetch_speciality.php',
+        method: 'POST',
+        data: { speciality_id: speciality_id },
+        success: function (response) {
+            // Display the response in a dialog or handle it as needed
+            const specialityDetails=JSON.parse(response);
+            const speciality_name=specialityDetails.speciality_name;
+            const speciality_description=specialityDetails.speciality_description;
+            const speciality_id=specialityDetails.speciality_id;
+    
+            specialityContainer.innerHTML=`
+                    <div class="form-group my-2">
+                        <label for="speciality_name" class="my-1">Speciality Name:</label>
+                        <input type="text" class="form-control" name="speciality_name" min="" value="${speciality_name}" required>
+                    </div>
+                    <div class="form-group my-2">
+                        <label for="speciality_description" class="my-1">Speciality Description:</label>
+                        <input type="text" class="form-control"  name="speciality_description" value="${speciality_description}" required>
+                    </div>
+                    <div class="form-group my-1 d-none">
+                        <label for="doctor_id" class="my-1">Speciality ID:</label>
+                        <input type="hidden" class="form-control" id="speciality_id" name="speciality_id" value="${speciality_id}" readonly >
+                    </div>
+                    
+                    <div class="btns-group mt-2 mb-2">
+                        <a href="#" class="closeBtn" id="hideDialogBtn">Close</a>
+                        <input type="submit" value="Update" class="btn submit-Btn btn-primary ml-auto">
+                    </div>
+                    `;
+        },
+        error: function () {
+            alert('Error fetching Speciality details.');
+        }
+    });
+
+    updateDialog.style.display='block';
+
+    pop_up_menu.classList.toggle('menu-visible');
 }
 function deleteSpeciality(event,speciality_id){
     const optionsBtn=event.target;

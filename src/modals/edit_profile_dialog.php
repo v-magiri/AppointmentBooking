@@ -41,15 +41,15 @@
                         <form action='../../includes/update_doctor.php' method='post' role='form'>
                             <div class='form-group my-1'>
                                 <label for='fullName' class='my-1'>Name:</label>
-                                <input type='text' class='form-control' name='fullName' >
+                                <input type='text' class='form-control' name='fullName' value='' >
                             </div>
                             <div class='form-group my-1'>
                                 <label for='emailAddress' class='my-1'>Email Address:</label>
-                                <input type='text' class='form-control' name='emailAddress'  required>
+                                <input type='text' class='form-control' name='emailAddress' value=''  required>
                             </div>
                             <div class='form-group my-1'>
                                 <label for='phoneNumber' class='my-1'>Phone Number:</label>
-                                <input type='text' class='form-control' name='phoneNumber'  required>
+                                <input type='text' class='form-control' name='phoneNumber' value=''  required>
                             </div>
                             <div class='form-group my-1 d-none'>
                                 <label for='doctor_id' class='my-1'> ID:</label>

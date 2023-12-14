@@ -184,7 +184,6 @@ body{
     font-weight: 400;
 }
 .btns-group{
-
     padding:0.3rem 0.3rem;
     display: flex;
     justify-content: space-between;
@@ -238,11 +237,12 @@ body{
     padding: 0.8rem 0.8rem;
     width: 100%;
     white-space: nowrap;
+    text-align: left !important;
 }
 .menu-item a{
     text-decoration: none;
     color: var(--dark);
-    text-align: left;
+    text-align: left !important;
 }
 .menu-item a span{
     margin-left: 0.25rem;

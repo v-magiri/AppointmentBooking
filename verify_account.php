@@ -18,7 +18,9 @@
         <form  action="./includes/verify_token.php" method="POST">
             <?php
                 if (isset($_GET["token"])) {
+
                     $token = $_GET["token"];
+                    
                     try{
                         $query="SELECT d.name FROM tbl_doctors d JOIN tbl_account_tokens t
                                 ON d.doctor_id= t.user_id 

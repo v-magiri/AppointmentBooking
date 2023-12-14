@@ -104,7 +104,7 @@
                                 <th>#</th>
                                 <th>Date</th>
                                 <th>Doctor</th>
-                                <th>Time</th>
+                                <th>Patient</th>
                                 <th>Session Title</th>
                                 <th>Actions</th>
                             </tr>
@@ -114,8 +114,9 @@
                                 try{
                                     if(isset($_SESSION["user_id"])){
                                     $patient_id= $_SESSION["user_id"];
-                                    $query="SELECT a.appointment_id,a.date,a.time,a.appointment_reason,d.name FROM tbl_appointments a
+                                    $query="SELECT a.appointment_id,a.date,a.appointment_reason,d.name,CONCAT(p.firstName,' ',p.lastName) AS patient_name FROM tbl_appointments a
                                             JOIN tbl_doctors d  ON a.doctor = d.doctor_id 
+                                            JOIN tbl_patients p ON a.patient_id =  p.patient_id
                                             ORDER BY a.date DESC ;";
                             
                                         $stmt=$conn->prepare($query);
@@ -136,9 +137,9 @@
                                                 </td>
                                                 <td>'.$row['date'].'
                                                 </td>
-                                                <td>'.$row['time'].'
-                                                </td>
                                                 <td>'.$row['name'].'
+                                                </td>
+                                                <td>'.$row['patient_name'].'
                                                 </td>
                                                 <td>'.substr($row['appointment_reason'],0,20).'
                                                 </td>

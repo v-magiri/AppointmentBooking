@@ -92,4 +92,18 @@
             return false;
         }
     }
+
+    function update_appointment_status(object $pdo,int $appointment_id,string $status){
+        $query= "UPDATE tbl_appointments SET status = :updated_status WHERE appointment_id = :appointment_id";
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":appointment_id",$appointment_id);
+        $stmt->bindParam(":updated_status",$status);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 ?>

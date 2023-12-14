@@ -32,4 +32,8 @@
     function delete_speciality_details($pdo,int $speciality){
         delete_speciality($pdo,$speciality);
     }
+
+    function update_speciality_details(object $pdo,string $speciality_name,string $speciality_description,int $speciality_id){
+        update_speciality($pdo,$speciality_name,$speciality_description, $speciality_id);
+    }
 ?>

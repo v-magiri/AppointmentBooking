@@ -125,7 +125,8 @@
                                 <?php
                                     try{
                                         $query="select d.doctor_id,d.name,d.email_address,d.username,s.speciality_name
-                                                FROM tbl_doctors d JOIN tbl_speciality s ON d.speciality = s.speciality_id ORDER BY d.doctor_id desc;";
+                                                FROM tbl_doctors d JOIN tbl_speciality s ON d.speciality = s.speciality_id
+                                                 ORDER BY d.name desc;";
                                         $stmt=$conn->query($query);
                                         // $stmt->execute();
                                     
@@ -149,10 +150,10 @@
                                                     </td>
                                                     <td class="optionMenu">
                                                         <span id="showOptions" onclick="showPopupMenu(event)">
-                                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                            <i class="fa-solid fa-ellipsis"></i>
                                                         </span>
                                                         <div class="popupMenu" id="popUpMenu">
-                                                            <div class="menu-item" onclick="openDoctorDialog(event,'.$row['doctor_id'].')">
+                                                            <div class="menu-item" onclick="openDoctorDailog(event,'.$row['doctor_id'].')">
                                                                 <a href="#">
                                                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                                     <span>View Doctor</span>
@@ -189,6 +190,8 @@
 
         <?php
             require_once '../modals/add_doctor_dialog.php';
+            require_once '../modals/doctor_dialog.php';
+            require_once '../modals/update_doctor.php';
         ?> 
 
         
@@ -198,6 +201,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="../../js/script.js"></script>
         <script src="../../js/admin.js"></script>
     </body>

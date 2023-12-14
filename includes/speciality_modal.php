@@ -49,4 +49,20 @@
         }
     }
 
+    function update_speciality(object $pdo,string $speciality,string $specialityDescription,int $id){
+        $query= "UPDATE tbl_speciality SET speciality_name = :updated_name,speciality_description = :updated_description
+                 WHERE speciality_id = :speciality_id";
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":speciality_id",$id);
+        $stmt->bindParam(":updated_name",$speciality);
+        $stmt->bindParam(":updated_description",$specialityDescription);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 ?>
