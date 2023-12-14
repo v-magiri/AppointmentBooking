@@ -99,7 +99,7 @@
 
                 </div>
                 <div class="session-wrapper">
-                    <h4>Upcoming Bookings</h4>
+                    <h4>Upcoming Sessions</h4>
                     <table class="booking_listing">
                         <thead>
                             <tr>
@@ -108,17 +108,17 @@
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Patient</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 try{
                                     $doctor_id = $_SESSION["user_id"];
-                                    $query="SELECT a.appointment_id,a.date,a.time,a.appointment_reason, CONCAT(p.firstName,' ',p.lastName) AS NAME FROM tbl_appointments a
-                                            JOIN tbl_patients p  ON p.patient_id = a.patient_id
-                                            WHERE a.doctor = :doctor_id AND a.date > CURRENT_DATE   
-                                            ORDER BY a.date DESC ;";
+                                    $query="SELECT s.session_id,s.session_title,s.session_time,s.session_date,CONCAT(p.firstName,' ',p.lastName) AS NAME FROM tbl_sessions s
+                                            JOIN tbl_appointments a  ON a.appointment_id = s.appointment_id
+                                            JOIN tbl_patients p ON p.patient_id = a.patient_id
+                                            WHERE a.doctor = :doctor_id AND s.session_date > CURRENT_DATE   
+                                            ORDER BY s.session_date DESC ;";
                             
                                         $stmt=$conn->prepare($query);
                                         $stmt->bindParam(":doctor_id",$doctor_id);
@@ -132,34 +132,15 @@
                                     foreach($result as $row){
                                         echo'
                                             <tr>
-                                                <td>'.$row['appointment_id'].'
+                                                <td>'.$row['session_id'].'
                                                 </td>
-                                                <td>'.substr($row['appointment_reason'],0,20).'
+                                                <td>'.substr($row['session_title'],0,20).'
                                                 </td>
-                                                <td>'.$row['date'].'
+                                                <td>'.$row['session_date'].'
                                                 </td>
-                                                <td>'.$row['time'].'
+                                                <td>'.$row['session_time'].'
                                                 </td>
                                                 <td>'.$row['NAME'].'
-                                                </td>
-                                                <td class="optionMenu">
-                                                    <span id="showOptions" onclick="showPopupMenu(event)">
-                                                        <i class="fa-solid fa-ellipsis"></i>
-                                                    </span>
-                                                    <div class="popupMenu" id="popUpMenu">
-                                                        <div class="menu-item" onclick="openAppointmentDialog(event,'.$row['appointment_id'].')">
-                                                            <a href="#">
-                                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                                                <span>View Appointment</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
-                                                            <a href="#">
-                                                                <i class="fa-solid fa-book-medical"></i>
-                                                                <span>Reshedule Appointment</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                         ';
@@ -167,7 +148,7 @@
                                 }else{
                                     echo'
                                         <tr>
-                                            <td colspan="6">
+                                            <td colspan="5">
                                                 No Upcoming Sessions
                                             </td>
                                         </tr>

@@ -55,6 +55,12 @@
                             <span>Appointments</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="sessions.php">
+                            <i class="fa-solid fa-calendar"></i>
+                            <span>Sessions</span>
+                        </a>
+                    </li>
 
                     <li class="active">
                         <a href="profile.php">

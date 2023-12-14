@@ -38,7 +38,7 @@
     margin-top: 3rem;
     padding:2rem 1.5rem;
 }
-.appointment-wrapper .table_listing{
+.appointment-wrapper .table_listing,.session-wrapper .table_listing{
     width: 100%;
     border-collapse: collapse;
 }
@@ -138,3 +138,17 @@ td, th {
 .optionMenu span{
     cursor: pointer;
 }
+/* SESSIONS PAGE  */
+.sessions-wrapper{
+    margin:2rem 0;
+    padding: 0.8rem 0.95rem;
+    width: 100%;
+}
+.sessions-wrapper .table_listing{
+    padding:0.8rem 0.95rem;
+    width: 100% !important;
+}
+/* .session-wrapper table{
+    width: 100%;
+} */
+/* END OF SESSIONS PAGE */

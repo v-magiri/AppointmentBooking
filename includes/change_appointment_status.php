@@ -14,11 +14,19 @@
                 $result=read_appointment($conn,$appointment);
 
                 if(!does_appointment_exist($result)){
-                    echo update_appointment_status($conn,$appointment,$status);
+                    if($status == 'Accepted'){
+                        if(update_appointment_status($conn,$appointment,$status) == true){
+                            echo create_appointment_session($conn,$result);
+                        }                           
+                    }else{
+                        echo update_appointment_status($conn,$appointment,$status);
+                    }
                 }else{
                     echo "Appointment does not exist";    
                 }
             }
+
+            redirect_user();
 
             $conn=null;
             $stmt=null;         

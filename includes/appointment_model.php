@@ -106,4 +106,19 @@
             return false;
         }
     }
+
+    function create_appointment_session(object $pdo,bool|array $result){
+        $query="INSERT INTO tbl_sessions (session_date,session_time,session_title,appointment_id) VALUES
+        (:date,:time,:session_title,:appointment_id);";
+        $stmt=$pdo->prepare($query);
+
+        $stmt->bindParam(":date",$result['date']);
+        $stmt->bindParam(":time",$result['time']);
+        $stmt->bindParam(":session_title",$result['appointment_reason']);
+        $stmt->bindParam(":appointment_id",$result['appointment_id']);
+        $stmt->execute();
+    
+        $result= $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 ?>
