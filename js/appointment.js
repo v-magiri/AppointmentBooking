@@ -88,11 +88,34 @@ function rescheduleAppointmentDialog(event,appointment_id){
 
     const pop_up_menu=optionsBtn.parentElement.parentElement.parentElement;
 
-    console.log(appointment_id);
+    // const appointmentDetails=getAppointment(appointment_id);
 
-    const appointment_input=document.getElementById('appointment_input');
+    // console.log(appointmentDetails);
 
-    appointment_input.value=appointment_id;
+    $.ajax({
+        url: '../../includes/fetch_appointment.php',
+        method: 'POST',
+        data: { appointment_id: appointment_id },
+        success: function (response) {
+            const appointment= JSON.parse(response);
+
+            let appointment_date=appointment.date
+            // const date=appointmentDetails.date;
+            const time=appointment.time;
+        
+        
+            const appointment_input=document.getElementById('appointment_input');
+            const appointment_dateInput=document.getElementById('dateInput');
+            const appointment_timeInput=document.getElementById('timeInput');
+        
+        
+            appointment_input.value=appointment_id;
+            appointment_dateInput.value=appointment_date;
+            appointment_timeInput.value=time;
+        }
+    });
+
+
 
     rescheduleDialog.style.display='block';
 

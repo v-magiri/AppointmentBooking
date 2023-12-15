@@ -3,7 +3,6 @@ const closeDialogBtn=document.getElementById('closeDialogBtn');
 const doctorDialog=document.getElementById('doctorModal');
 const closeDoctorDialog=document.getElementById('closeBtn');
 const doctorsModal=document.getElementById('doctorDailog');
-const viewDoctorDialog=document.getElementById('doctor_dialog');
 const closeDoctorModal=document.getElementById('hideBtn');
 const closeModalBtn=document.getElementById('hideDialog');
 
@@ -144,13 +143,9 @@ function editDoctor(event,doctor_id){
                                 <label for="phoneNumber" class="my-1">Phone Number:</label>
                                 <input type="text" class="form-control" id="phoneNumberTxt" name="phoneNumber"  value="${phoneNumber}" required>
                             </div>
-                            <div class="form-group my-1 categorySelect">
-                                <label for="speciality" class="my-1">Doctor Speciality</label>
-                                <input type="text" class="form-control" id="speciality" name="speciality"  value="${speciality}" required>
-                            </div>
-                            <div class='btns-group mt-4 mb-2'>
-                                <a href='#' class='closeBtn' id='hideProfileDialogBtn'>Close</a>
-                                <input type='submit' value='Update' class='btn submit-Btn btn-primary ml-auto'>
+                            <div class="form-group my-1 d-none">
+                                <label for="doctor_id" class="my-1">Doctor ID:</label>
+                                <input type="text" class="form-control" id="doctors" name="doctor_id"  value="${doctor_id}" required>
                             </div>
                         `;
         },

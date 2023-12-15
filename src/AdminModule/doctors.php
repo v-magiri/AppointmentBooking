@@ -62,7 +62,7 @@
                             <span>Appointments</span>
                         </a>
                     </li>
-
+                    
 
                     <li>
                         <a href="settings.php">
@@ -159,13 +159,13 @@
                                                                     <span>View Doctor</span>
                                                                 </a>
                                                             </div>
-                                                            <div class="menu-item" onclick="editDoctor(event,'.$row['doctor_id'].')">
+                                                            <div class="menu-item" onclick="editDoctor(event,'.$row['doctor_id'].'  )">
                                                                 <a href="#">
                                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                                     <span>Update Doctor</span>
                                                                 </a>
                                                             </div>
-                                                            <div class="menu-item" onclick="deleteDoctor(event,'.$row['doctor_id'].')">
+                                                            <div class="menu-item" id="deleteDoctor" onclick="deleteUser(event,'.$row['doctor_id'].')">
                                                                 <a href="#">
                                                                     <i class="fa-solid fa-trash"></i>
                                                                     <span>Delete Doctor</span>
@@ -192,6 +192,7 @@
             require_once '../modals/add_doctor_dialog.php';
             require_once '../modals/doctor_dialog.php';
             require_once '../modals/update_doctor.php';
+            require_once '../modals/delete_user.php';
         ?> 
 
         

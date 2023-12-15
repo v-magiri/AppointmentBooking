@@ -196,7 +196,7 @@
             const hideForm=document.getElementById('closeBtn');
             const closeFormDialogBtn=document.getElementById('closeFormBtn');
             const closeBtn=document.getElementById('hideBtn');
-            const hideDailogBtn=document.getElementById('closeDialogBtn');
+            const hideDailogBtn=document.getElementById('hideDialog');
             const viewDoctorDialog=document.getElementById('doctor_dialog');
             const doctorEmailTxt=document.getElementById('emailAddressTxt');
             const doctorName=document.getElementById('nameTxt');
@@ -317,6 +317,30 @@
             // Set the minimum and maximum time for the time input
             document.getElementById('timeInput').min = minimumTime;
             document.getElementById('timeInput').max = maximumTime;
+
+            const textArea=document.querySelector('.reason');
+            const currentWordCount=document.getElementById('wordCount');
+            const wordLimit=30;
+
+            textArea.addEventListener('input', () => {
+                let text = textArea.value;
+
+                if (text.length > wordLimit) {
+                    text = text.slice(0, wordLimit);
+                    textArea.value = text;
+                }
+
+                currentWordCount.textContent = text.length;
+            });
+
+            textArea.addEventListener('keydown',function(event){
+                var text=textArea.value;
+                if(event.key==="Backspace" && text.length === 0 ){
+                    event.preventDefault();
+                }else if (text.length >= wordLimit) {
+                    event.preventDefault();
+                }
+            })
         </script>
     </body>
 </html>

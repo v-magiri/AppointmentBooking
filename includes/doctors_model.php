@@ -121,4 +121,36 @@
             return false;
         }
     }
+
+    function update_doctor_details(object $pdo,string $name,string $email,string $phoneNumber,int $doctor_id,string $speciality){
+        $query= "UPDATE tbl_doctors SET name = :name,email_address = :email,phoneNumber = :updated_phone,speciality=:updated_speciality WHERE doctor_id = :doctor_id";
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":doctor_id",$doctor_id);
+        $stmt->bindParam(":name",$name);
+        $stmt->bindParam(":email",$email);
+        $stmt->bindParam(":updated_phone",$phoneNumber);
+        $stmt->bindParam(":updated_speciality",$speciality);
+        $stmt->execute();
+        
+        if($stmt->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function deleteDoctor(object $pdo,int $doctor_id){
+        $query = "DELETE FROM tbl_doctors WHERE doctor_id = :doctor";
+        // Use prepared statements to prevent SQL injection
+        $stmt = $pdo->prepare($query);
+        // Bind parameters
+        $stmt->bindParam(':doctor', $doctor_id);
+        // Execute the query
+        $stmt->execute();
+        if($stmt->rowCount()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 ?>

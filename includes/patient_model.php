@@ -29,7 +29,18 @@
 
     }
 
-    function delete_patient(){
-
+    function deletePatient(object $pdo,int $patient_id){
+        $query = "DELETE FROM tbl_patients WHERE patient_id = :patient";
+        // Use prepared statements to prevent SQL injection
+        $stmt = $pdo->prepare($query);
+        // Bind parameters
+        $stmt->bindParam(':patient', $patient_id);
+        // Execute the query
+        $stmt->execute();
+        if($stmt->rowCount()>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 ?>

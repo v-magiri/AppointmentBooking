@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group my-1">
                     <label for="appointment_time" class="my-1">Time:</label>
-                    <input type="time" class="form-control"  name="appointment_time" required>
+                    <input type="time" class="form-control"  name="appointment_time" id="timeInput" required>
                 </div>
                 <div class="form-group my-1 d-none">
                     <label for="doctor_id" class="my-1">Doctor:</label>
@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="description" class="my-1">Appointment Reason/Title::</label>
                     <div class="text-wrapper">
-                        <textarea  cols="30" rows="3" name="appointment_reason" id="appointment_reason" placeholder=" Event Description" class="form-control text-area" required></textarea>
+                        <textarea  cols="30" rows="3" name="appointment_reason" id="appointment_reason" placeholder="Appointment Description" class="form-control reason" required></textarea>
                         <p><span id="wordCount">0</span>/<span id="wordLimit">30</span> words</p>
                     </div>
                 </div>

@@ -142,20 +142,20 @@ th {
 .optionMenu span{
     cursor: pointer;
 }
-.availability{
+.availability,.status{
     font-size: 0.95rem;
     text-align: center;
 }
-.availability .available-txt{
+.availability .available-txt,.status .accepted-txt{
     background-color: var(--success);
     color: var(--white);
-    padding:0 0.6rem;
+    padding:0.05rem 0.6rem;
     border-radius: 0.8rem;
 }
-.availability .non_availabilityTxt{
+.availability .non_availabilityTxt,.status .rejected-txt{
     background-color: var(--orange);
     color: var(--white);
-    padding:0 0.6rem;
+    padding:0.05rem 0.6rem;
     border-radius: 0.8rem;
 }
 .sessions-wrapper{
@@ -167,4 +167,10 @@ th {
     padding:0.8rem 0.95rem;
     width: 100% !important;
 }
+
+/* APPOINTMENT DIALOG  */
+.text-wrapper p{
+    text-align: end;
+}
+/* END OF APPOINTMENT DIALOG */
 /* END OF PATIENT STYLES */

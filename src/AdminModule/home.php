@@ -62,7 +62,7 @@
                         </a>
                     </li>
 
-
+                    
                     <li>
                         <a href="settings.php">
                             <i class="fa-solid fa-gear"></i>
@@ -162,25 +162,27 @@
                     </div>
                 </div>
                 <div class="appointments_wrapper">
-                    <h4>Upcoming Appointments</h4>
+                    <h4>Upcoming Sessions</h4>
                     <table class="table-wrapper">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Date</th>
-                                <th>Doctor</th>
-                                <th>Time</th>
                                 <th>Session Title</th>
-                                <th>Actions</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Doctor</th>
+                                <th>Patient</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php
                                 try{
-                                    $query="SELECT a.appointment_id,a.date,a.time,d.name,a.appointment_reason FROM tbl_appointments a
-                                            JOIN tbl_doctors d  ON a.doctor = d.doctor_id 
-                                            WHERE  a.date > CURRENT_DATE
-                                            ORDER BY a.date DESC ;";
+                                    $query="SELECT s.session_id,s.session_title,s.session_date,s.session_time,d.name,CONCAT(p.firstName,' ',p.lastName) AS patient_name FROM tbl_sessions s
+                                            JOIN tbl_appointments a  ON a.appointment_id = s.appointment_id
+                                            JOIN tbl_doctors d  ON d.doctor_id = a.doctor
+                                            JOIN tbl_patients p  ON p.patient_id = a.patient_id
+                                            WHERE  s.session_date >= CURRENT_DATE
+                                            ORDER BY s.session_date DESC ;";
                                     $stmt=$conn->query($query);
                                     // $stmt->execute();
                                 
@@ -192,40 +194,17 @@
                                     foreach($result as $row){
                                         echo'
                                             <tr>
-                                                <td>'.$row['appointment_id'].'
+                                                <td>'.$row['session_id'].'
                                                 </td>
-                                                <td>'.$row['date'].'
+                                                <td>'.substr($row['session_title'],0,20).'
                                                 </td>
-                                                <td>'.$row['time'].'
+                                                <td>'.$row['session_date'].'
+                                                </td>
+                                                <td>'.$row['session_time'].'
                                                 </td>
                                                 <td>'.$row['name'].'
                                                 </td>
-                                                <td>'.substr($row['appointment_reason'],0,20).'
-                                                </td>
-                                                <td class="optionMenu">
-                                                    <span id="showOptions" onclick="showPopupMenu(event)">
-                                                        <i class="fa-solid fa-ellipsis"></i>
-                                                    </span>
-                                                    <div class="popupMenu" id="popUpMenu">
-                                                        <div class="menu-item" onclick="openAppointmentDialog(event,'.$row['appointment_id'].')">
-                                                            <a href="#">
-                                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                                                <span>View Appointment</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
-                                                            <a href="#">
-                                                                <i class="fa-solid fa-book-medical"></i>
-                                                                <span>Reshedule Appointment</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-item" onclick="openDeleteDialog(event,'.$row['appointment_id'].')">
-                                                            <a href="#">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                                <span>Delete Appointment</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                                <td>'.$row['patient_name'].'
                                                 </td>
                                             </tr>
                                         ';

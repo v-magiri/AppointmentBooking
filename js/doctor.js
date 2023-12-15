@@ -174,11 +174,4 @@ function changeAppointmentStatus(event,appointment_id){
 
     pop_up_menu.classList.toggle('menu-visible');
 }
-// function rejectAppointment(event,appointment_id,status){
-//     event.preventDefault();
 
-//     $.ajax({
-//         type:"POST",
-//         url:""
-//     })
-// }

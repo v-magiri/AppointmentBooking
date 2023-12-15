@@ -106,10 +106,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Doctor</th>
                                 <th>Session Title</th>
+                                <th>Date</th>
+                                <th>Approval Status</th>
+                                <th>Doctor</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -118,7 +118,7 @@
                                 try{
                                     if(isset($_SESSION["user_id"])){
                                     $patient_id= $_SESSION["user_id"];
-                                    $query="SELECT a.appointment_id,a.date,a.time,a.appointment_reason,d.name FROM tbl_appointments a
+                                    $query="SELECT a.appointment_id,a.date,a.status,a.appointment_reason,d.name FROM tbl_appointments a
                                             JOIN tbl_doctors d  ON a.doctor = d.doctor_id 
                                             WHERE a.patient_id = :patient_id
                                             ORDER BY a.date DESC ;";
@@ -140,13 +140,18 @@
                                             <tr>
                                                 <td>'.$row['appointment_id'].'
                                                 </td>
-                                                <td>'.$row['date'].'
-                                                </td>
-                                                <td>'.$row['time'].'
-                                                </td>
-                                                <td>'.$row['name'].'
-                                                </td>
                                                 <td>'.substr($row['appointment_reason'],0,20).'
+                                                </td>
+                                                <td>'.$row['date'].'
+                                                </td>';
+                                                if($row['status'] == "Accepted"){
+                                                    echo "<td class='status'><span class='accepted-txt'>".$row['status']."</span></td>";
+                                                }else{
+                                                    echo "<td class='status'><span class='rejected-txt'>".$row['status']."</span></td>";
+                                                }
+                                                echo
+                                                '
+                                                <td>'.$row['name'].'
                                                 </td>
                                                 <td class="optionMenu">
                                                     <span id="showOptions" onclick="showPopupMenu(event)">
@@ -159,24 +164,24 @@
                                                                 <span>View Appointment</span>
                                                             </a>
                                                         </div>';
-                                                        if($row['date'] >= date("Y-m-d")){
+                                                        if($row['date'] >= date("Y-m-d") and ($row['status'] != "Accepted") and ($row['status'] != "Rejected")){
                                                             echo '
-                                                            <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
-                                                                <a href="#">
-                                                                    <i class="fa-solid fa-book-medical"></i>
-                                                                    <span>Reshedule Appointment</span>
-                                                                </a>
-                                                            </div>
+                                                                    <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
+                                                                        <a href="#">
+                                                                            <i class="fa-solid fa-book-medical"></i>
+                                                                            <span>Reshedule Appointment</span>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="menu-item" onclick="openDeleteDialog(event,'.$row['appointment_id'].')">
+                                                                        <a href="#">
+                                                                            <i class="fa-solid fa-trash"></i>
+                                                                            <span>Delete Appointment</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                             ';
                                                         }
                                                     echo'
-                                                        <div class="menu-item" onclick="openDeleteDialog(event,'.$row['appointment_id'].')">
-                                                            <a href="#">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                                <span>Delete Appointment</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                         ';

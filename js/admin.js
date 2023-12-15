@@ -5,6 +5,11 @@ const closeDialogIcon=document.getElementById('closeBtn');
 const updateDialog=document.getElementById('speciality_dialog');
 const hideSpecialityBtn=document.getElementById('hideDialogBtn');
 const hideSpecialityDialog=document.getElementById('hideBtn');
+const deleteUserDialog=document.getElementById('delete_user_dialog');
+//doctor dialog
+const doctorDailog=document.getElementById('doctorDailog');
+const viewDoctorDialog=document.getElementById('doctor_dialog');
+const doctor_updateDialog=document.getElementById('');
 
 const specialityDeleteDialog=document.getElementById('delete_speciality_dialog');
 const specialityContainer=document.getElementById('specialityContainer');
@@ -12,6 +17,13 @@ const specialityContainer=document.getElementById('specialityContainer');
 // delete speciality dialog
 const hideBtn=document.getElementById('closeDeleteDialog');
 const hideDeleteDialog=document.getElementById('cancelDeleteBtn');
+
+//user dialog controls
+const hideUserDelete=document.getElementById('cancelDeleteButton');
+const hideUserDeleteDialog=document.getElementById('closeDeleteUserDialog');
+
+hideUserDelete.addEventListener('click',closeUserDeleteDialog);
+hideUserDeleteDialog.addEventListener('click',closeUserDeleteDialog);
 
 // event listeners for update dialog
 hideSpecialityBtn.addEventListener('click',hideSpecialityModal);
@@ -30,6 +42,10 @@ function closeDeleteDialog(){
 
 function closeDialog(){
     dialog.style.display='none';
+}
+
+function closeUserDeleteDialog(){
+    deleteUserDialog.style.display="none";
 }
 
 function openSpecialityDialog(){
@@ -111,4 +127,36 @@ function deleteSpeciality(event,speciality_id){
     specialityDeleteDialog.style.display='block';
 
     pop_up_menu.classList.toggle('menu-visible');
+}
+
+//function to delete patient /doctor
+function deleteUser(event,user_id){
+    const optionsBtn=event.target;
+    
+    let user_type="Patient";
+
+    const pop_up_menu=optionsBtn.parentElement.parentElement.parentElement;
+
+    const role_input=document.getElementById('user_type');
+
+    const statusOption=optionsBtn.parentElement.parentElement;
+
+    if(statusOption.id === "deleteDoctor"){
+
+        user_type="Doctor";
+    }
+
+    role_input.value=user_type;
+
+    const user_input=document.getElementById('user_id');
+
+    user_input.value=user_id;
+
+    deleteUserDialog.style.display='block';
+
+    pop_up_menu.classList.toggle('menu-visible');
+}
+
+function editPatient(event, patient_id){
+
 }

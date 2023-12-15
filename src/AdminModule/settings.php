@@ -61,7 +61,6 @@
                             <span>Appointments</span>
                         </a>
                     </li>
-
                     <li class="active">
                         <a href="settings.php">
                             <i class="fa-solid fa-gear"></i>
