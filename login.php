@@ -23,10 +23,13 @@
                 <label for="user_password" class="form-label">Password:</label><br>
                 <input type="password"class="form-control" id="user_password" name="user_password">
             </div>
-            <p class="text-end">Create Account? <a href="signup.php">Sign Up</a></p>
-            <button type="submit" class="btn btn-primary text-center">Login</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary text-center loginBtn">Login</button>
+            </div>            
+            <p class="text-end"><a href="forgot-password.php">Forgot Password ?</a></p>
+            <!-- <p class="text-end">Create Account? <a href="signup.php">Sign Up</a></p> -->
+            
         </form>
-        <p class="text-left"><a href="forgot-password.php">Forgot Password ?</a></p>
     </div>
 </div>
 

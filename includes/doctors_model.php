@@ -153,4 +153,23 @@
             return false;
         }
     }
+
+    function reset_password(object $pdo,$password,int $doctor_id){
+        $query= "UPDATE tbl_doctors SET password = :updated_password WHERE doctor_id = :doctor_id";
+        //hashing the password
+        $hashingOptions=[
+            "cost" => 12
+        ];
+        $hashedPwd=password_hash($password,PASSWORD_BCRYPT,$hashingOptions); 
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":doctor_id",$doctor_id);
+        $stmt->bindParam(":updated_password",$hashedPwd);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 ?>

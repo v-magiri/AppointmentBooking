@@ -114,6 +114,14 @@ body{
 .login-wrapper form,.verify-wrapper form{
     width:100%;
 }
+.loginBtn,.registerBtn,.resetPassword{
+    padding:0.5rem 2rem !important;
+    font-size: 1.15rem !important;
+    font-weight: 500 !important;
+}
+.resetPassword{
+    margin: 1.5rem auto;
+}
 /* LOGIN PAGE STYLES  */
 
 /* PATIENT REGISTRATION STYLES  */
@@ -124,6 +132,11 @@ body{
 }
 .signup-wrapper .signup-form .title h4{
 
+}
+.signup-form{
+    background-color: var(--white-shade);
+    padding:4rem 2rem 1rem 2rem;
+    border-radius: 0.8rem !important;
 }
 
 .verify-wrapper{

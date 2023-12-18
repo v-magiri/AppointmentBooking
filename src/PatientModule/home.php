@@ -100,7 +100,11 @@
                         echo "<span class='nameTxt'>". get_name() . "</span>";
                     ?> 
                     <div class="instruction_container">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam numquam laudantium corrupti nobis eos cumque placeat eligendi sunt, animi asperiores, nemo nihil veniam? Debitis cumque, porro officiis vitae id ducimus!</p>
+                        <p>The Kasarani appointment Booking portal is a system designed to elevate the hurdles
+                            experienced when booking appointments with a doctor. This system will enable you as a patient to
+                            book an appointment wherever you are and reschedule those appointment if the previous appointment booking Date
+                            has not elapsed.
+                        </p>
                     </div>
 
                 </div>

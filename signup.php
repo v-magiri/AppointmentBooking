@@ -40,9 +40,9 @@
                 <label for="confirm_password" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="confirm_password" name="confirm_password">
             </div>
-            
-            <button type="submit" class="btn btn-primary text-center">Submit</button>
-
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary text-center registerBtn">Submit</button>
+            </div>
         </form>
         <?php 
             check_registration_errors();

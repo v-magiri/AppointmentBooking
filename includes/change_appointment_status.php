@@ -6,6 +6,8 @@
             require_once './database_config.php';
             require_once './appointment_controller.php';
             require_once './appointment_model.php';
+            require_once './patient_model.php';
+            require_once './email_service.php';
 
             if(isset($_POST['appointment'])){
                 $appointment = (int) $_POST['appointment'];
@@ -21,6 +23,7 @@
                     }else{
                         echo update_appointment_status($conn,$appointment,$status);
                     }
+                    send_status_email($appointment,$status,$conn,$result['date'],$result['$patient_id']);
                 }else{
                     echo "Appointment does not exist";    
                 }

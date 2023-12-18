@@ -153,7 +153,7 @@
                     </div>
                     <div class="password_wrapper">
                         <h4 class="mb-3">Change Password</h4>
-                        <form action="">
+                        <form action="../../includes/reset_password.php" method="post" role="form">
                             <div class="mb-3">
                                 <label for="pwd" class="form-label">New Password</label>
                                 <input type="password" class="form-control" id="pwd" name="pwd">
@@ -161,6 +161,14 @@
                             <div class="mb-3">
                                 <label for="c_pwd" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control" id="c_pwd" name="c_pwd">
+                            </div>
+                            <div class="form-group my-1 d-none">
+                                <label for="patient_id" class="my-1">Patient:</label>
+                                <input type="hidden" class="form-control" id="patientInput" name="user_id" value="<?php echo $_SESSION['user_id'] ?>" required>
+                            </div>
+                            <div class="form-group my-1 d-none">
+                                <label for="role" class="my-1">Role:</label>
+                                <input type="hidden" class="form-control" id="roleInput" name="role" value="<?php echo $_SESSION['user_type'] ?>" required>
                             </div>
                             <button type="submit" class="btn btn-primary text-center">Change Password</button>
                         </form>

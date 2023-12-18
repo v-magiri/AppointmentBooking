@@ -9,6 +9,9 @@
             require_once './database_config.php';
             require_once './appointment_controller.php';
             require_once './appointment_model.php';
+            require_once './doctors_model.php';
+            require_once './patient_model.php';
+            require_once './email_service.php';
 
             $errors=[];
 
@@ -16,15 +19,16 @@
                 $errors['empty_input'] = 'Please fill all fields';
             }
 
-            $result=get_appointment($conn,$appointment_id);
+            $appointment_result=get_specific_appointment($conn,$appointment_id);
 
-            if(does_appointment_exist($result)){
+            if(does_appointment_exist($appointment_result)){
                 $errors['appointment_does_exist'] = 'Appointment does not exist';
             }
             require_once 'config_session.inc.php';
 
             if(isset($_SESSION["user_id"])){
                 update_appointment($conn,$updated_date,$updated_time,$appointment_id);
+                send_reschedule_email($conn,$appointment_result,$updated_date,$updated_time);
             }else{
                 header('Location: ../login.php');
             }

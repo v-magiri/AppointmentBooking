@@ -121,4 +121,14 @@
         $result= $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    function get_specific_appointment(object $pdo,int $appointment_id){
+        $query="SELECT * FROM tbl_appointments WHERE appointment_id=:appointment_id;";
+        $stmt=$pdo->prepare($query);
+        $stmt->bindParam(":appointment_id",$appointment_id);
+        $stmt->execute();
+
+        $result= $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 ?>
