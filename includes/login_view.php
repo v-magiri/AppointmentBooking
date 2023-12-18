@@ -11,6 +11,13 @@
             unset($_SESSION['errors_login']);
         }else if(isset($_GET['login']) && $_GET["login"]== "success"){
             echo '<p>Successfully Loggged in</p>';
+        }else if(isset($_SESSION['reset_errors'])){
+            $errors=$_SESSION['reset_errors'];
+            echo "<br>";
+            foreach($errors as $error){
+                echo '<p class="form-error">'.$error.'</p>';
+            }
+            unset($_SESSION['reset_errors']);
         }
     }
 
@@ -29,6 +36,17 @@
                 echo '<p class="form-error">'.$error.'</p>';
             }
             unset($_SESSION['password_errors']);
+        }
+    }
+
+    function check_reset_errors(){
+        if(isset($_SESSION['reset_errors'])){
+            $errors=$_SESSION['reset_errors'];
+            echo "<br>";
+            foreach($errors as $error){
+                echo '<p class="form-error">'.$error.'</p>';
+            }
+            unset($_SESSION['reset_errors']);
         }
     }
 ?>

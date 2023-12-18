@@ -12,12 +12,12 @@
             <h4 class="text-center">Forgot Password ?</h4>
         </div>
         <?php
-            check_login_errors();
+            check_reset_errors();
         ?>
-        <form  action="./includes/signin.inc.php" method="POST">
-            <div class="mb-3">
-                <label for="email" class="form-label">Enter your Email Address:</label><br>
-                <input type="email" class="form-control" id="email" name="email"  required>
+        <form  action="./includes/forgot_password.php" method="POST">
+            <div class="my-3">
+                <label for="username" class="form-label">Enter your Username:</label><br>
+                <input type="text" class="form-control" id="username" name="user_name"  required>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary text-center resetPassword">Submit</button>

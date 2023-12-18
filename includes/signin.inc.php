@@ -25,7 +25,7 @@
             if($role_result["role"] === "Doctor"){
                 $result=get_doctor($conn,$user_name);
             }else if($role_result["role"] === "Patient"){
-                $result=get_patient($conn,$user_name);
+                $result=fetch_patient($conn,$user_name);
             }else if($role_result["role"] === "Admin"){
                 $result=get_admin($conn,$user_name);
             }

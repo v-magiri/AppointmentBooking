@@ -10,7 +10,7 @@
     <div class="login-form">
         <div class="title">
             <h4 class="text-center">Appointment System Login</h4>
-        </div>
+        </div>  
         <?php
             check_login_errors();
         ?>
