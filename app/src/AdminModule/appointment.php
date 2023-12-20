@@ -114,7 +114,7 @@
                                 try{
                                     if(isset($_SESSION["user_id"])){
                                     $patient_id= $_SESSION["user_id"];
-                                    $query="SELECT a.appointment_id,a.date,a.appointment_reason,d.name,CONCAT(p.firstName,' ',p.lastName) AS patient_name FROM tbl_appointments a
+                                    $query="SELECT a.appointment_id,a.date,a.appointment_reason,a.status,d.name, CONCAT(p.firstName,' ',p.lastName) AS patient_name FROM tbl_appointments a
                                             JOIN tbl_doctors d  ON a.doctor = d.doctor_id 
                                             JOIN tbl_patients p ON a.patient_id =  p.patient_id
                                             ORDER BY a.date DESC ;";
@@ -154,7 +154,7 @@
                                                                 <span>View Appointment</span>
                                                             </a>
                                                         </div>';
-                                                        if($row['date'] >= date("Y-m-d")){
+                                                        if($row['date'] >= date("Y-m-d") and ($row['status'] != "Accepted") and ($row['status'] != "Rejected")){
                                                             echo '
                                                             <div class="menu-item" onclick="rescheduleAppointmentDialog(event,'.$row['appointment_id'].')">
                                                                 <a href="#">

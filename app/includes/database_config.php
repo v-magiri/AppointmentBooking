@@ -1,9 +1,9 @@
 <?php
 
-$database="appointmentPortal";
-$host="localhost";
-$dbuser="root";
-$dbpassword='';
+$database="MYSQL_DATABASE";
+$host="db";
+$dbuser="MYSQL_USER";
+$dbpassword='MYSQL_PASSWORD';
 
 try{
     $conn=new PDO("mysql:host=$host;dbname=$database",$dbuser,$dbpassword);

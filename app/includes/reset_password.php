@@ -35,7 +35,7 @@
                     header('Location: ../login.php');
                 }
             }else{
-                $result=fetch_patient($conn,$user_id);
+                $result=get_patient($conn,$user_id);
 
                 if(does_patient_exist($result)){
                     $errors['patient_invalid'] = 'Patient does not exist';

@@ -5,6 +5,7 @@ const closeDoctorDialog=document.getElementById('closeBtn');
 const doctorsModal=document.getElementById('doctorDailog');
 const closeDoctorModal=document.getElementById('hideBtn');
 const closeModalBtn=document.getElementById('hideDialog');
+const viewDoctorDialog=document.getElementById('doctor_dialog');
 
 // update profile dialog 
 const doctorProfileDialog=document.getElementById('profileDialog');
