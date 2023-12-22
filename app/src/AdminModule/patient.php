@@ -1,5 +1,5 @@
 <?php
-    require_once '../../includes/config_session.inc.php';
+    // require_once '../../includes/config_session.inc.php';
     require_once '../../includes/user_status.php';
     include('../../includes/database_config.php');
     

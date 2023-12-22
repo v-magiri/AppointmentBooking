@@ -1,27 +1,32 @@
-version: '3.8'
+version: '3'
 services:
-  app:
-    container_name: app
-    build:
-      context: ./app
-      dockerfile: Dockerfile
+  php-app:
+    build: ./app
+    ports:
+      - "8080:80"
     depends_on:
       - db
+    environment:  
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=appointmentportal
+      - DB_USERNAME=root
+      - DB_PASSWORD=test@123
     volumes:
-      - ./app:/var/www/html/
-    ports:
-      - 8000:80  
+      - ./app:/var/www/html
+
   db:
     container_name: db
-    image: mysql
+    image: mysql:8.0
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root@32
-      MYSQL_DATABASE: appointmentPortal 
+      MYSQL_ROOT_PASSWORD: test@123
+      MYSQL_DATABASE: appointmentportal
       MYSQL_USER: grace
-      MYSQL_PASSWORD: 4321
+      MYSQL_PASSWORD: grace_65
     ports:
-      - "9906:3306"  
+      - "9906:3306" 
+
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin
